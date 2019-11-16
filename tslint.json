@@ -13,7 +13,10 @@
         "noImplicitAny": true,
         "noImplicitThis": false,
         "strictNullChecks": false,
-        "eofline": false
+        "eofline": false,
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "ordered-imports": false
     },
     "rulesDirectory": []
 }
