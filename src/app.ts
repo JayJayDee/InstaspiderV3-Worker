@@ -1,4 +1,11 @@
+import { initLogger, log } from './logger';
+import { initConfigurations, http } from './configurations';
+
+const tag = '[app]';
 
 (async () => {
-  console.log('!');
+  initLogger();
+  initConfigurations();
+
+  log.info(`${tag} instaspider-worker started, port: ${http().port}`);
 })();
