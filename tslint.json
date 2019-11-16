@@ -6,7 +6,14 @@
     "jsRules": {},
     "rules": {
         "quotemark": false,
-        "no-console": false
+        "no-console": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": true,
+        "noImplicitThis": false,
+        "strictNullChecks": false,
+        "eofline": false
     },
     "rulesDirectory": []
 }

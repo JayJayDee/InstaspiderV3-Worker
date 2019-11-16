@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2016",
     "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -10,14 +10,6 @@
     "alwaysStrict": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "noImplicitThis": false,
-
-    "strictNullChecks": false,
     "lib": ["es6", "es2018.promise"]
   },
   "include": [

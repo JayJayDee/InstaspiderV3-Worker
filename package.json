@@ -4,7 +4,8 @@
   "description": "worker for instapisder-v3",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -e ts ./src --exec ts-node -- --project ./tsconfig.json -T ./src/app",
+    "dev": "TS_NODE_FILES=true nodemon --watch ./src -e ts --exec ts-node -- --project ./tsconfig.json -T ./src/app",
+    "lint": "tslint -t stylish --project ./tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
