@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "TS_NODE_FILES=true nodemon --watch ./src -e ts --exec ts-node -- --project ./tsconfig.json -T ./src/app",
+    "dev:play": "TS_NODE_FILES=true nodemon --watch ./src -e ts --exec ts-node -- --project ./tsconfig.json -T ./src/playground",
     "lint": "tslint -t stylish --project ./tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/node": "^12.12.8",
+    "@types/puppeteer": "^1.20.2",
     "nodemon": "^1.19.4",
     "ts-node": "^8.5.2",
     "tslib": "^1.10.0",
