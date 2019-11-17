@@ -10,8 +10,11 @@ export default () =>
     await page.goto('https://www.clien.net/service/board/sold');
     log.debug(`${tag} page loaded`);
 
-    const elems = await page.$('[data-role=list-title-text]');
-    log.debug(elems);
+    const elems = await page.$$('[data-role=list-title-text]');
+    const promises = elems.map((elem) => elem.getProperty('title'));
+
+    const titles = await Promise.all(promises);
+    console.log(titles);
 
     log.debug(`${tag} selling-articles gathering done.`);
     return [];
