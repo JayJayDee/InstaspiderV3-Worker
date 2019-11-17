@@ -13,8 +13,6 @@ export const initSites = () => {
   siteConfs.forEach((conf) => {
     sites.push(mappedSites[conf.site](conf.credentials));
   });
-
-  console.log(sites);
 };
 
 export const pickSite = (site: SiteType) => sites.find((s) => s.site === site);
