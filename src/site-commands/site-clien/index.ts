@@ -1,7 +1,7 @@
 import login from './login';
-import { SiteType } from '../types';
+import { SiteType, SiteCredential, Site } from '../types';
 
-export default {
+export default (creds: SiteCredential): Site => ({
   site: 'CLIEN' as SiteType,
-  login,
-};
+  login: login(creds),
+});
