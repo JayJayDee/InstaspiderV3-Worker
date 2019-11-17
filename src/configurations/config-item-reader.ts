@@ -5,14 +5,11 @@ export const configReader =
     ({ key, mandantory = false, defaultValue }:
       { key: string, mandantory?: boolean, defaultValue?: any }) => {
 
-      if (!mandantory) {
-        mandantory = true;
-      }
       if (!source[key] && mandantory === true) {
         throw new Error(`environment variable: ${key} wasn\'t supplied.`);
       }
-      if (!source[key] && !defaultValue) {
-        throw new Error(`environment variable: ${key} wasn\'t supplied.`);
+      if (!source[key] && defaultValue === undefined) {
+        return null;
       }
       if (!source[key] && defaultValue) {
         return defaultValue;
