@@ -2,13 +2,19 @@ import { Site, SiteType } from "./types";
 import clien from './site-clien';
 import { siteConf } from '../configurations';
 
-const sites: Site[] = [
-  clien,
-];
+const sites: Site[] = [];
+
+const mappedSites: {[key: string]: (...args: any[]) => Site} = {
+  'CLIEN': clien,
+};
 
 export const initSites = () => {
-  const conf = siteConf();
-  console.log(conf);
+  const siteConfs = siteConf();
+  siteConfs.forEach((conf) => {
+    sites.push(mappedSites[conf.site](conf.credentials));
+  });
+
+  console.log(sites);
 };
 
 export const pickSite = (site: SiteType) => sites.find((s) => s.site === site);
