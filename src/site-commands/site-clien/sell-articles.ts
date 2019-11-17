@@ -10,11 +10,17 @@ export default () =>
     await page.goto('https://www.clien.net/service/board/sold');
     log.debug(`${tag} page loaded`);
 
-    const elems = await page.$$('[data-role=list-title-text]');
-    const promises = elems.map((elem) => elem.getProperty('title'));
-
-    const titles = await Promise.all(promises);
-    console.log(titles);
+    const samples =
+      await page.$$eval('.list_subject', (elems: any[]) =>
+        elems
+        .filter((e) => e.children.length === 2)
+        .map((e) => ({
+          link: `https://clien.net${e.getAttribute('href')}`,
+          purpose: e.children[0].getAttribute('title') === '판매' ? 'SELL' : 
+                    e.children[0].getAttribute('title') === '교환' ? 'EXCHANGE' : 'BUY',
+          title: e.children[1].getAttribute('title'),
+        })));
+    log.debug(samples);
 
     log.debug(`${tag} selling-articles gathering done.`);
     return [];
