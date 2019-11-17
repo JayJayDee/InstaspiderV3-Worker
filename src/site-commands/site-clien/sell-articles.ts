@@ -10,6 +10,9 @@ export default () =>
     await page.goto('https://www.clien.net/service/board/sold');
     log.debug(`${tag} page loaded`);
 
+    const elems = await page.$('[data-role=list-title-text]');
+    log.debug(elems);
+
     log.debug(`${tag} selling-articles gathering done.`);
     return [];
   };
