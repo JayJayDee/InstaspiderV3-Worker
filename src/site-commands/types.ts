@@ -9,7 +9,7 @@ export type SiteCredential = {
 
 export type SellArticle = {
   url: string;
-  purpose: 'SELL' | 'BUY' | 'EXCHANGE';
+  purpose: 'SELL' | 'BUY' | 'EXCHANGE' | 'DONE';
   title: string;
   regDate: Date;
 };

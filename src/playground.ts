@@ -23,6 +23,6 @@ import { launch } from 'puppeteer';
   const site = pickSite('CLIEN');
   await site.login(page);
 
-  const articles = await site.sellArticles(page);
-  console.log(articles);
+  const resp = await site.sellArticles(page);
+  console.log(resp);
 })();
