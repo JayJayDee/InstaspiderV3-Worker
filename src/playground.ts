@@ -11,6 +11,15 @@ import { launch } from 'puppeteer';
   const browser = await launch({ headless: false });
   const page = (await browser.pages())[0];
 
+  await page.setRequestInterception(true);
+  page.on('request', (request) => {
+    if (request.resourceType() === 'image') {
+      request.abort();
+    } else {
+      request.continue();
+    }
+  });
+
   const site = pickSite('CLIEN');
   await site.login(page);
 
