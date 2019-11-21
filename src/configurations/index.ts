@@ -16,7 +16,7 @@ export const httpConf = (): HttpConfg => ({
 });
 
 type SiteConf = {
-  site: 'CLIEN',
+  site: 'CLIEN' | 'BUNJANG',
   enabled: boolean,
   credentials: {
     loginId: string,
@@ -31,6 +31,14 @@ export const siteConf = () => {
       credentials: {
         loginId: read({ key: 'SITE_CLIEN_ID', mandantory: false }),
         password: read({ key: 'SITE_CLIEN_PASSWORD', mandantory: false }),
+      },
+    },
+    {
+      site: 'BUNJANG',
+      enabled: read({ key: 'SITE_BUNJANG_ENABLED', mandantory: false, defaultValue: false }) === 'true' ? true : false,
+      credentials: {
+        loginId: read({ key: 'SITE_BUNJANG_ID', mandantory: false }),
+        password: read({ key: 'SITE_BUNJANG_PASSWORD', mandantory: false }),
       },
     },
   ];
