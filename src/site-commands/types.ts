@@ -25,5 +25,6 @@ export type SellArticleResponse = {
 export type Site = {
   site: SiteType;
   login: (page: Page) => Promise<void>;
+  isLoggedIn: (page: Page) => Promise<boolean>;
   sellArticles: (page: Page) => Promise<SellArticleResponse>;
 };

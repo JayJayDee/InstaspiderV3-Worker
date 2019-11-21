@@ -24,9 +24,12 @@ import { initSites, pickSite } from './site-commands';
     }
   });
 
-  const site = pickSite('BUNJANG');
+  const site = pickSite('CLIEN');
 
-  await site.login(page);
+  const loggedIn = await site.isLoggedIn(page);
+  if (loggedIn === false) {
+    await site.login(page);
+  }
 
   const resp = await site.sellArticles(page);
   console.log(resp);

@@ -18,4 +18,10 @@ export const initSites = () => {
   });
 };
 
-export const pickSite = (site: SiteType) => sites.find((s) => s.site === site);
+export const pickSite = (site: SiteType) => {
+  const picked = sites.find((s) => s.site === site);
+  if (!picked) {
+    throw new Error(`site not found:${site} in configuration`);
+  }
+  return picked;
+};
