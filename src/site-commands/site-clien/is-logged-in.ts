@@ -13,5 +13,9 @@ export default () =>
 
     await little(1);
 
-    return false;
+    const elem = await page.$('.account_name');
+    if (elem === null) {
+      return false;
+    }
+    return true;
   };

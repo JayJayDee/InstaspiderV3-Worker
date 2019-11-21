@@ -20,5 +20,9 @@ export default (creds: SiteCredential) =>
     await little(1);
     await (await page.$('[type=submit]')).click();
 
+    await page.waitForNavigation({
+      waitUntil: 'load',
+    });
+
     log.debug(`${tag} login success`);
   };

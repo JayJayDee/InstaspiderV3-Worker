@@ -24,7 +24,7 @@ import { initSites, pickSite } from './site-commands';
     }
   });
 
-  const site = pickSite('CLIEN');
+  const site = pickSite('BUNJANG');
 
   const loggedIn = await site.isLoggedIn(page);
   if (loggedIn === false) {
