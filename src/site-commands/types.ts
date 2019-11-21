@@ -1,6 +1,6 @@
 import { Page } from 'puppeteer';
 
-export type SiteType = 'CLIEN';
+export type SiteType = 'CLIEN' | 'BUNJANG';
 
 export type SiteCredential = {
   loginId: string;
