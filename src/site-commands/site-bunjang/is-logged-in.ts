@@ -14,6 +14,10 @@ export default () =>
     await little(1);
 
     const logoutText = await page.$('.byhRxB');
+    if (!logoutText) {
+      return true;
+    }
+
     const text = await page.evaluate((elem) => elem.innerText, logoutText);
 
     if (text === '로그아웃') {

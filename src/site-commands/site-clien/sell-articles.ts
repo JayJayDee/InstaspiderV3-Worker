@@ -26,6 +26,7 @@ export default () =>
                       articleType === '구입' ? 'BUY' : 'EXCHANGE',
             title: e.querySelector('.subject_fixed').getAttribute('title'),
             regDate: e.querySelector('.timestamp').innerText,
+            site: 'CLIEN',
           };
         }));
 

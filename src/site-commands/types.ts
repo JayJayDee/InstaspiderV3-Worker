@@ -8,6 +8,7 @@ export type SiteCredential = {
 };
 
 export type SellArticle = {
+  site: SiteType;
   url: string;
   purpose: 'SELL' | 'BUY' | 'EXCHANGE' | 'DONE';
   title: string;
