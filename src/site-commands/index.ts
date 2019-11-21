@@ -1,11 +1,14 @@
+import { siteConf } from '../configurations';
+
 import { Site, SiteType } from "./types";
 import clien from './site-clien';
-import { siteConf } from '../configurations';
+import bunjang from './site-bunjang';
 
 const sites: Site[] = [];
 
 const mappedSites: {[key: string]: (...args: any[]) => Site} = {
   'CLIEN': clien,
+  'BUNJANG': bunjang,
 };
 
 export const initSites = () => {

@@ -24,7 +24,8 @@ import { initSites, pickSite } from './site-commands';
     }
   });
 
-  const site = pickSite('CLIEN');
+  const site = pickSite('BUNJANG');
+
   await site.login(page);
 
   const resp = await site.sellArticles(page);
