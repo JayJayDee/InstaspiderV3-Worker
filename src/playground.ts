@@ -1,14 +1,18 @@
+import { launch } from 'puppeteer';
+import { join } from 'path';
 import { initLogger } from './logger';
 import { initConfigurations } from './configurations';
 import { initSites, pickSite } from './site-commands';
-import { launch } from 'puppeteer';
 
 (async () => {
   initLogger();
   initConfigurations();
   initSites();
 
-  const browser = await launch({ headless: false });
+  const browser = await launch({
+    headless: false,
+    userDataDir: `${join(__dirname, 'browser-data')}`,
+  });
   const page = (await browser.pages())[0];
 
   await page.setRequestInterception(true);

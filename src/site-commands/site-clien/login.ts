@@ -17,6 +17,9 @@ export default (creds: SiteCredential) =>
     await little(1);
     await (await page.$('.input_pw')).type(creds.password);
     await little(1);
+
+    (await page.$('.check_auto')).click();
     await (await page.$('[name=로그인하기]')).click();
+
     log.debug(`${tag} login success`);
   };
