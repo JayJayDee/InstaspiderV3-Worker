@@ -21,5 +21,9 @@ export default (creds: SiteCredential) =>
     (await page.$('.check_auto')).click();
     await (await page.$('[name=로그인하기]')).click();
 
+    await page.waitForNavigation({
+      waitUntil: 'load',
+    });
+
     log.debug(`${tag} login success`);
   };

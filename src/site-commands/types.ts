@@ -8,6 +8,7 @@ export type SiteCredential = {
 };
 
 export type SellArticle = {
+  site: SiteType;
   url: string;
   purpose: 'SELL' | 'BUY' | 'EXCHANGE' | 'DONE';
   title: string;
@@ -25,5 +26,6 @@ export type SellArticleResponse = {
 export type Site = {
   site: SiteType;
   login: (page: Page) => Promise<void>;
+  isLoggedIn: (page: Page) => Promise<boolean>;
   sellArticles: (page: Page) => Promise<SellArticleResponse>;
 };
