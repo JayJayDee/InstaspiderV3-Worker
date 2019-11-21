@@ -1,4 +1,4 @@
-import { launch } from 'puppeteer';
+import { launch, Page } from 'puppeteer';
 import { join } from 'path';
 import { initLogger } from './logger';
 import { initConfigurations } from './configurations';
@@ -24,13 +24,18 @@ import { initSites, pickSite } from './site-commands';
     }
   });
 
-  const site = pickSite('BUNJANG');
+  const r1 = await fetchArticles('BUNJANG', page);
+  const r2 = await fetchArticles('CLIEN', page);
 
+  const merged = [ ...r1.articles, ...r2.articles ];
+  console.log(merged);
+})();
+
+const fetchArticles = async (siteType: 'BUNJANG' | 'CLIEN', page: Page) => {
+  const site = pickSite(siteType);
   const loggedIn = await site.isLoggedIn(page);
   if (loggedIn === false) {
     await site.login(page);
   }
-
-  const resp = await site.sellArticles(page);
-  console.log(resp);
-})();
+  return await site.sellArticles(page);
+};
