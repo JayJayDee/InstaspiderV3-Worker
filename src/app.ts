@@ -1,6 +1,7 @@
 import { initLogger, log } from './logger';
 import { initConfigurations } from './configurations';
 import { initSites } from './site-commands';
+import { initQueue } from './queue';
 
 const tag = '[app]';
 
@@ -9,6 +10,7 @@ const tag = '[app]';
   initConfigurations();
 
   initSites();
+  await initQueue();
 
-  log.info(`${tag} instaspider-worker started`);
+  log.info(`${tag} UsedThings-Worker started`);
 })();

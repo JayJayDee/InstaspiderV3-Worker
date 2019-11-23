@@ -1,0 +1,1 @@
+export type PublishToQueue<T> = (payload: T) => void;

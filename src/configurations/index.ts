@@ -49,3 +49,36 @@ export const siteConf = () => {
   }
   return filtered;
 };
+
+type QueueConf = {
+  type: 'AMQP';
+  amqp?: QueueAmqpConf;
+  topics: {
+    result: string;
+  }
+};
+type QueueAmqpConf = {
+  host: string;
+  port: number;
+  login: string;
+  password: string;
+};
+export const queueConf = (): QueueConf => {
+  const type = read({ key: 'QUEUE_TYPE', mandantory: true });
+  let amqp: QueueAmqpConf = null;
+
+  if (type === 'AMQP') {
+    amqp = {
+      host: read({ key: 'AMQP_HOST', mandantory: true }),
+      port: read({ key: 'AMQP_PORT', mandantory: true }),
+      login: read({ key: 'AMQP_LOGIN', mandantory: true }),
+      password: read({ key: 'AMQP_PASSWORD', mandantory: true }),
+    };
+  }
+
+  const topics = {
+    result: read({ key: 'QUEUE_TOPIC_RESULT', mandantory: true }),
+  };
+
+  return { type, amqp, topics };
+};
