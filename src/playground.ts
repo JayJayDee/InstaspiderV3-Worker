@@ -24,11 +24,11 @@ import { initSites, pickSite } from './site-commands';
     }
   });
 
-  const r1 = await fetchArticles('BUNJANG', page);
-  const r2 = await fetchArticles('CLIEN', page);
+  const p1 = fetchArticles('BUNJANG', page);
+  const p2 = fetchArticles('CLIEN', page);
 
-  const merged = [ ...r1.articles, ...r2.articles ];
-  console.log(merged);
+  const responses = await Promise.all([p1, p2]);
+  console.log(responses);
 })();
 
 const fetchArticles = async (siteType: 'BUNJANG' | 'CLIEN', page: Page) => {
