@@ -14,18 +14,10 @@ import { initSites, pickSite } from './site-commands';
     userDataDir: `${join(__dirname, 'browser-data')}`,
   });
   const page = (await browser.pages())[0];
-
-  await page.setRequestInterception(true);
-  page.on('request', (request) => {
-    if (request.resourceType() === 'image') {
-      request.abort();
-    } else {
-      request.continue();
-    }
-  });
+  const page2 = await browser.newPage();
 
   const p1 = fetchArticles('BUNJANG', page);
-  const p2 = fetchArticles('CLIEN', page);
+  const p2 = fetchArticles('CLIEN', page2);
 
   const responses = await Promise.all([p1, p2]);
   console.log(responses);
@@ -33,6 +25,7 @@ import { initSites, pickSite } from './site-commands';
 
 const fetchArticles = async (siteType: 'BUNJANG' | 'CLIEN', page: Page) => {
   const site = pickSite(siteType);
+  await site.prepare(page);
   const loggedIn = await site.isLoggedIn(page);
   if (loggedIn === false) {
     await site.login(page);
